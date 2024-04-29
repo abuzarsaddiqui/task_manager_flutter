@@ -8,7 +8,6 @@ import 'package:task_manager/domain/usecase/list_tasks_usecase.dart';
 import 'package:task_manager/presentation/bloc/task/task_event.dart';
 import 'package:task_manager/presentation/bloc/task/task_state.dart';
 
-
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final ListTaskUseCase listTasksUseCase;
   final AddTaskUseCase addTaskUseCase;

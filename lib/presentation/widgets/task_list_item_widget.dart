@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/domain/entity/task.dart';
 
-class TaskItem extends StatelessWidget{
+class TaskItem extends StatelessWidget {
   final Task task;
   final Function() onPressed;
 
@@ -10,10 +10,12 @@ class TaskItem extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(task.description),
-      trailing: IconButton(icon: const Icon(Icons.delete), onPressed: onPressed,)
-      // Implement delete functionality
-    );
+        title: Text(task.description),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete),
+          onPressed: onPressed,
+        )
+        // Implement delete functionality
+        );
   }
-
 }

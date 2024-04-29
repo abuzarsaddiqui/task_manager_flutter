@@ -19,20 +19,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<TasksBloc>(
       create: (context) => TasksBloc(
-          listTasksUseCase: ListTaskUseCase(TaskRepositoryImpl()),
-          addTaskUseCase: AddTaskUseCase(TaskRepositoryImpl()),
-          deleteTaskUseCase: DeleteTaskUseCase(TaskRepositoryImpl()),
-        ),
+        listTasksUseCase: ListTaskUseCase(TaskRepositoryImpl()),
+        addTaskUseCase: AddTaskUseCase(TaskRepositoryImpl()),
+        deleteTaskUseCase: DeleteTaskUseCase(TaskRepositoryImpl()),
+      ),
       child: MaterialApp(
-        title: 'Task Manager',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const ListTaskScreen()
-        ),
+          title: 'Task Manager',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: const ListTaskScreen()),
     );
   }
 }
-
-
