@@ -5,7 +5,7 @@ class Task {
   final String title;
 
   Task({required this.title})
-  : id = const Uuid().v1()
+  : id = const Uuid().v1();
 
   @override
   bool operator ==(Object other) =>
