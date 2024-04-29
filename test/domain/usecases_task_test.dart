@@ -4,8 +4,6 @@ import 'package:task_manager/domain/entity/task.dart';
 import 'package:task_manager/domain/usecase/add_task_usecase.dart';
 import 'package:task_manager/domain/usecase/delete_task_usecase.dart';
 
-
-
 void useCasesTests() {
   group('TaskUseCase', () {
     late AddTaskUseCase addTaskUseCase;
@@ -35,7 +33,8 @@ void useCasesTests() {
       const description = 'delete task';
       await addTaskUseCase.addTask(description);
       List<Task> tasks = await repository.getAllTasks();
-      var task = tasks.firstWhere((element) => element.description == description);
+      var task =
+          tasks.firstWhere((element) => element.description == description);
 
       // Act
 

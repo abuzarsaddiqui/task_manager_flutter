@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:task_manager/data/task_repository_impl.dart';
-import 'package:task_manager/domain/entity/task.dart';
 import 'package:task_manager/domain/usecase/add_task_usecase.dart';
 import 'package:task_manager/domain/usecase/delete_task_usecase.dart';
 import 'package:task_manager/domain/usecase/list_tasks_usecase.dart';
@@ -42,10 +40,11 @@ void blocTests() {
       await expectLater(
         bloc.stream,
         emitsThrough(isA<TasksState>().having(
-              (state) => state.runtimeType,
+          (state) => state.runtimeType,
           'type',
           TasksLoaded,
-        )),      );
+        )),
+      );
     });
 
     test('AddTask event emits TasksLoaded state after adding task', () async {
@@ -59,13 +58,15 @@ void blocTests() {
       await expectLater(
         bloc.stream,
         emitsThrough(isA<TasksState>().having(
-              (state) => state.runtimeType,
+          (state) => state.runtimeType,
           'type',
           TasksLoaded,
-        )),      );
+        )),
+      );
     });
 
-    test('DeleteTask event emits TasksLoaded state after deleting task', () async {
+    test('DeleteTask event emits TasksLoaded state after deleting task',
+        () async {
       // Arrange
       const description = 'New Task';
       bloc.add(AddTask(description));
@@ -77,10 +78,11 @@ void blocTests() {
       await expectLater(
         bloc.stream,
         emitsThrough(isA<TasksState>().having(
-              (state) => state.runtimeType,
+          (state) => state.runtimeType,
           'type',
           TasksLoaded,
-        )),      );
+        )),
+      );
     });
   });
 }

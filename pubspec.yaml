@@ -40,6 +40,7 @@ dependencies:
   mockito: ^5.4.4
 
 
+  bloc: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

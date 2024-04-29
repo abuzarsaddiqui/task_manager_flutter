@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:task_manager/data/task_repository_impl.dart';
 import 'package:task_manager/domain/usecase/add_task_usecase.dart';
 import 'package:task_manager/domain/usecase/delete_task_usecase.dart';
@@ -11,7 +10,6 @@ import 'package:task_manager/presentation/bloc/task/task_bloc.dart';
 import 'package:task_manager/presentation/screens/list_task.dart';
 
 // Create a mock TasksBloc
-
 
 void listScreenTests() {
   group('ListTaskScreen', () {
@@ -25,8 +23,8 @@ void listScreenTests() {
       );
     });
 
-    testWidgets('Renders TasksEmpty state correctly', (WidgetTester tester) async {
-
+    testWidgets('Renders TasksEmpty state correctly',
+        (WidgetTester tester) async {
       // Build the ListTaskScreen widget with the mocked TasksBloc
       await tester.pumpWidget(BlocProvider<TasksBloc>(
         create: (context) => tasksBloc,
@@ -45,7 +43,6 @@ void listScreenTests() {
       // Verify that the TasksLoaded state is rendered correctly
       expect(find.text('Tasks'), findsOneWidget);
       expect(find.text('Click + to create tasks'), findsOneWidget);
-
     });
   });
 }
