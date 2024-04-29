@@ -6,7 +6,7 @@ class AddTaskUseCase {
 
   AddTaskUseCase(this._repository);
 
-  Future<void> addTask(Task task) {
-    return _repository.addTask(task);
+  Future<void> addTask(String description) {
+    return _repository.addTask(Task(description: description));
   }
 }

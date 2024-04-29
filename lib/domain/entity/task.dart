@@ -2,9 +2,9 @@ import 'package:uuid/uuid.dart';
 
 class Task {
   final String id;
-  final String title;
+  final String description;
 
-  Task({required this.title})
+  Task({required this.description})
   : id = const Uuid().v1();
 
   @override
@@ -17,6 +17,6 @@ class Task {
 
   @override
   String toString() {
-    return 'Task{id: $id, title: $title}';
+    return 'Task{id: $id, title: $description}';
   }
 }
