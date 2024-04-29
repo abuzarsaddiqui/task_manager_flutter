@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_manager/presentation/bloc/task/task_event.dart';
 import 'package:task_manager/presentation/screens/add_task_screen.dart';
 
 import '../bloc/task/task_bloc.dart';
@@ -33,7 +34,12 @@ class ListTaskScreen extends StatelessWidget {
                 itemCount: state.tasks.length,
                 itemBuilder: (context, index) {
                   final task = state.tasks[index];
-                  return TaskItem(task:task, onPressed: (){},);
+                  return TaskItem(
+                      task: task,
+                      onPressed: () {
+                        BlocProvider.of<TasksBloc>(context)
+                            .add(DeleteTask(task));
+                      });
                 },
               );
             } else {

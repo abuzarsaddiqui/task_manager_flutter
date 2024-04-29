@@ -1,16 +1,12 @@
-// bloc/tasks/tasks_bloc.dart
-
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:task_manager/domain/entity/task.dart';
 import 'package:task_manager/domain/usecase/add_task_usecase.dart';
 import 'package:task_manager/domain/usecase/delete_task_usecase.dart';
 import 'package:task_manager/domain/usecase/list_tasks_usecase.dart';
 import 'package:task_manager/presentation/bloc/task/task_event.dart';
 import 'package:task_manager/presentation/bloc/task/task_state.dart';
-
-import '../../../domain/entity/task.dart';
-
 
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
@@ -18,21 +14,20 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final AddTaskUseCase addTaskUseCase;
   final DeleteTaskUseCase deleteTaskUseCase;
 
-
   TasksBloc({
     required this.listTasksUseCase,
     required this.addTaskUseCase,
     required this.deleteTaskUseCase,
-  }) : super(TasksEmpty()){
-    on<AddTask>((event, emit)=>_onAddTask(event.description, emit));
-    on<LoadTasks>((event, emit)=>_onLoadTasks(emit));
-    on<DeleteTask>((event, emit)=>_onDeleteTask(event.task, emit));
+  }) : super(TasksEmpty()) {
+    on<AddTask>((event, emit) => _onAddTask(event.description, emit));
+    on<LoadTasks>((event, emit) => _onLoadTasks(emit));
+    on<DeleteTask>((event, emit) => _onDeleteTask(event.task, emit));
   }
 
   Future<void> _onLoadTasks(Emitter<TasksState> emit) async {
     try {
       final tasks = await listTasksUseCase.listTasks();
-      emit(TasksLoaded(tasks));
+      emit(tasks.isNotEmpty ? TasksLoaded(tasks) : TasksEmpty());
     } catch (error) {
       print(error);
     }
@@ -48,7 +43,6 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     } catch (error) {
       //handle exception
       print(error);
-
     }
   }
 
@@ -59,7 +53,6 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     } catch (error) {
       //handle exception
       print(error);
-
     }
   }
 }
